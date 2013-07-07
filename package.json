@@ -1,0 +1,31 @@
+{
+  "name": "json-list-stream",
+  "version": "0.0.0",
+  "description": "json-list-stream",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "concat-stream": "~1.0.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tellnes/json-list-stream.git"
+  },
+  "keywords": [
+    "json",
+    "list",
+    "stream",
+    "response",
+    "rows",
+    "transform"
+  ],
+  "author": {
+    "name": "Christian Tellnes",
+    "email": "christian@tellnes.no",
+    "url": "http://christian.tellnes.com"
+  },
+  "license": "MIT"
+}
