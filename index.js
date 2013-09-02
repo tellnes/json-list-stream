@@ -22,6 +22,10 @@ List.prototype.set = function (key, value) {
   if (typeof key !== 'string')
     throw new Error('`key` must be a string')
 
+  // JSON.stringify(undefined) returns undefined which Readable#push() does not like.
+  if (typeof value === 'undefined')
+    throw new Error('`value` can not be undefined')
+
   if (this._streaming) {
     if (!this._footer) this._footer = {}
     this._footer[key] = value
