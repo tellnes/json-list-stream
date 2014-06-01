@@ -8,7 +8,9 @@ module.exports = List
 function List() {
   if (!(this instanceof List)) return new List()
 
-  Transform.call(this, { objectMode : true })
+  Transform.call(this)
+  this._writableState.objectMode = true
+  this._readableState.objectMode = false
 
   this._hasHeader = false
   this._footer = null
