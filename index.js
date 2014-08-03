@@ -84,7 +84,7 @@ List.prototype._flush = function (cb) {
     this._startStreaming()
   }
 
-  this.push(']')
+  this.push('\n]')
 
   if (this._footer) {
     this.push(',')
@@ -93,6 +93,8 @@ List.prototype._flush = function (cb) {
   } else {
     this.push('}')
   }
+
+  this.push('\n')
 
   cb()
 }
