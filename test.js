@@ -6,6 +6,7 @@ function test(body, fn) {
   var list = new List()
 
   list.pipe(concat(function (data) {
+    data = String(data)
     assert.deepEqual(JSON.parse(data), body)
     assert.equal(data.replace(/\n/g, ''), JSON.stringify(body))
   }))
