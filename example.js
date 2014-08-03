@@ -18,4 +18,4 @@ list.pipe(process.stdout)
 {"n":2}
 ],"count":2}
 
-/*
+*/
