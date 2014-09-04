@@ -12,11 +12,9 @@ function List() {
   this._writableState.objectMode = true
   this._readableState.objectMode = false
 
-  this._hasHeader = false
+  this._header = null
   this._footer = null
   this._streaming = false
-
-  this.push('{')
 }
 inherits(List, Transform)
 
@@ -32,16 +30,10 @@ List.prototype.set = function (key, value) {
     if (!this._footer) this._footer = {}
     this._footer[key] = value
     return
+  } else {
+    if (!this._header) this._header = {}
+    this._header[key] = value
   }
-
-  if (this._hasHeader)
-    this.push(',')
-  else
-    this._hasHeader = true
-
-  this.push(JSON.stringify(key))
-  this.push(':')
-  this.push(JSON.stringify(value))
 
   return this
 }
@@ -53,8 +45,12 @@ List.prototype.pipe = function (res) {
 }
 
 List.prototype._startStreaming = function () {
-  if (this._hasHeader)
+  if (this._header) {
+    this.push(JSON.stringify(this._header).slice(0, -1))
     this.push(',')
+  } else {
+    this.push('{')
+  }
 
   this.push('"rows":[\n')
 }
