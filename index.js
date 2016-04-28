@@ -82,6 +82,8 @@ List.prototype._flush = function (cb) {
 
   this.push('\n]')
 
+  this.emit('footer')
+
   if (this._footer) {
     this.push(',')
     this.push(JSON.stringify(this._footer).slice(1))
