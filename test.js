@@ -103,3 +103,11 @@ test(
     list.end()
   }
 )
+
+var list = new List()
+list.on('footer', () => list.set('foo', 'bar'))
+list.pipe(concat((data) => {
+  data = String(data)
+  assert.deepEqual(JSON.parse(data), { rows: [], foo: 'bar' })
+}))
+list.end()

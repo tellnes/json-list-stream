@@ -43,6 +43,8 @@ List.prototype.pipe = function (res) {
 }
 
 List.prototype._startStreaming = function () {
+  this._streaming = true
+
   if (this._header) {
     this.push(JSON.stringify(this._header).slice(0, -1))
     this.push(',')
@@ -56,7 +58,6 @@ List.prototype._startStreaming = function () {
 List.prototype._transform = function (row, chunk, cb) {
   if (!this._streaming) {
     this._startStreaming()
-    this._streaming = true
 
   } else {
     this.push(',\n')

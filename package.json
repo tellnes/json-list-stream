@@ -1,6 +1,6 @@
 {
   "name": "json-list-stream",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "json-list-stream",
   "main": "index.js",
   "dependencies": {},
